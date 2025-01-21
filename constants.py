@@ -3,6 +3,7 @@ SCREEN_HEIGHT = 720
 
 PLAYER_RADIUS = 20
 PLAYER_TURN_SPEED = 300  # degrees per second
+PLAYER_SPEED = 200  # pixels per second squared
 
 ASTEROID_MIN_RADIUS = 20
 ASTEROID_KINDS = 3
