@@ -1,4 +1,5 @@
 import pygame
+import sys
 
 from constants import *
 from player import Player
@@ -42,6 +43,14 @@ def main():
 
         for sprite in updateable:
             sprite.update(dt)
+
+        for asteroid in asteriods:
+            collision_detected = asteroid.detect_collision(player)
+            print(collision_detected)
+            if collision_detected:
+                print("Game Over!")
+                sys.exit()
+
 
         dt = game_clock.tick(FPS) / 1000
 
