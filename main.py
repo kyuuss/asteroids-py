@@ -6,6 +6,7 @@ from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
 
+
 def main():
     print("Starting asteroids!")
     print(f"Screen width: {SCREEN_WIDTH}")
@@ -13,7 +14,6 @@ def main():
 
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-
 
     drawable = pygame.sprite.Group()
     updateable = pygame.sprite.Group()
@@ -35,7 +35,7 @@ def main():
                 return
 
         screen.fill((0, 0, 0))
-        
+
         for sprite in drawable:
             sprite.draw(screen)
 
@@ -51,9 +51,8 @@ def main():
                 print("Game Over!")
                 sys.exit()
 
-
         dt = game_clock.tick(FPS) / 1000
+
 
 if __name__ == "__main__":
     main()
-
