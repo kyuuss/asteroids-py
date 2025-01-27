@@ -8,10 +8,11 @@ from shot import Shot
 class Player(CircleShape):
     containers = []
 
-    def __init__(self, x, y):
+    def __init__(self, x, y, shots):
         super().__init__(x, y, PLAYER_RADIUS)
         self.rotation = 0
         self.rate_limit = 0
+        self.shots = shots
 
     def triangle(self):
         forward = pygame.Vector2(0, 1).rotate(self.rotation)
@@ -51,9 +52,10 @@ class Player(CircleShape):
         if self.rate_limit > 0:
             return
 
+        print("shoot")
         self.rate_limit = PLAYER_SHOOT_COOLDOWN
-        shot = Shot(self.position)
+        shot = Shot(self.position.x, self.position.y, SHOT_RADIUS)
         shot.velocity = pygame.Vector2(0, 1).rotate(
             self.rotation) * PLAYER_SHOT_SPEED
+        Shot.containers[0].add(shot)
 
-        Player.containers.append(shot)

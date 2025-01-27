@@ -5,6 +5,7 @@ from constants import *
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+from shot import Shot
 
 
 def main():
@@ -23,8 +24,9 @@ def main():
     AsteroidField.containers = (updateable)
     Asteroid.containers = (drawable, updateable, asteriods)
     Player.containers = (drawable, updateable)
+    Shot.containers = (drawable, updateable, shots)
 
-    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, shots)
     FPS = 60
     game_clock = pygame.time.Clock()
     dt = 0
@@ -53,7 +55,7 @@ def main():
 
         for asteroid in asteriods:
             for bullet in shots:
-                collision_detected = asteriod.detect_collison(bullet)
+                collision_detected = asteroid.detect_collision(bullet)
 
                 if collision_detected:
                     bullet.kill()
