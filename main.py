@@ -59,7 +59,7 @@ def main():
 
                 if collision_detected:
                     bullet.kill()
-                    asteroid.kill()
+                    asteroid.split()
 
         dt = game_clock.tick(FPS) / 1000
 
